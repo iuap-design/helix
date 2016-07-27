@@ -1,9 +1,9 @@
 # Helix
 
-`helix` 是一个精简的前端MVVM框架，具有数据双向绑定和组件化实现等功能。
-
-[![npm version](https://img.shields.io/npm/v/helix.svg)](https://www.npmjs.com/package/helix)
+[![npm version](https://img.shields.io/npm/v/iuap-design-helix.svg)](https://www.npmjs.com/package/iuap-design-helix)
 [![Build Status](https://img.shields.io/travis/iuap-design/helix/master.svg)](https://travis-ci.org/iuap-design/helix)
+
+`helix` 是一个精简的前端MVVM框架，具有数据双向绑定和组件化实现等功能。
 
 ## 开发技术说明
 
