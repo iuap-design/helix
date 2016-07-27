@@ -10,3 +10,8 @@ env:
   global:
     - NODE_ENV=travisci
     - NPM_CONFIG_PROGRESS="false"
+
+before_install:
+  - npm install
+
+script: npm run build
