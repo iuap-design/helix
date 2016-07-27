@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Helixjs Demo</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="./bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="runit.css" />
+		<style type="text/css">
+			body {
+				padding-top: 50px;
+			}
+			.starter-template {
+				padding: 40px 15px;
+				text-align: center;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">HelixJS</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a>
+						</li>
+						<li><a href="#about">About</a>
+						</li>
+						<li><a href="#contact">Contact</a>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="starter-template">
+				<h1>对象绑定</h1>
+				<div style="text-align: left;">
+					<div style="border: #C12E2A solid 2px;padding: 15px;height: 350px;overflow-y: scroll;">
+						<div id="view1">
+							<div>
+								<h2 hi-data="item1.attr1"></h2>
+								<h3 hi-data="item1.attr3.attr1"></h3>
+								<table class="table table-striped">
+									<thead>
+										<tr><td>姓名</td><td>年龄</td></tr>
+									</thead>
+									<tbody hi-items="item1.attr3.arr1" hi-item="item">
+										<tr><td hi-data="item.name"></td><td  hi-data="item.age"></td></tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<p>Console</p>
+					<div class="runConsole">
+						<div style="width: 45%;display: inline-block;vertical-align: top;margin-right: 20px;">
+							<textarea id="runit" name="runit" rows="5" style="width:99%"></textarea>
+							<p style="color: red;" id="errorMsg"></p>
+							<input type="button" name="runitBtn" id="runitBtn" value="执行" onclick="runitBtnClick() " />
+
+						</div>
+						<div id="runHistory">
+
+						</div>
+						<div style="height: 0px;clear: both;"></div>
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		<!-- /.container -->
+
+
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/util.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/helix.parser.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/helix.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/helix.if.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/helix.list.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vo = {
+				item1: {
+					attr1: "你好",
+					attr2: 100,
+					attr3: {
+						attr1: "属性3的属性1",
+						arr1: [{
+							name: "韩梅梅",
+							age: 11
+						}, {
+							name: "李磊",
+							age: 11
+						}, {
+							name: "Poly",
+							age: 3
+						}]
+					}
+
+				}
+			};
+			var vm = helix.def("view1", vo);
+		</script>
+		<script type="text/javascript">
+		</script>
+		<script src="runit.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+
+</html>

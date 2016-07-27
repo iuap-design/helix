@@ -1,0 +1,12 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - "4"
+  - "6"
+
+env:
+  global:
+    - NODE_ENV=travisci
+    - NPM_CONFIG_PROGRESS="false"

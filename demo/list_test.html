@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>list test</title>
+	</head>
+
+	<body>
+
+		<div id="view1">
+			<h1 hi-data="test2"></h1>
+		
+			<table style=" border-collapse: collapse;">
+				<thead><tr><th>编号</th><th>姓名</th><th>年龄</th></tr></thead>
+				<tbody id="list1" hi-items="list1" hi-item="item">
+					<tr>
+						<td><i hi-data="$index"></i></td>
+						<td></td>
+						<td><input type="text" hi-bind="item.name"></input><i hi-data="item.age"></i></td>
+					</tr>
+				</tbody>
+			</table>
+				
+				 	<h2 hi-data="test2"></h2>
+				 	<hr />
+			 <div>
+			 	<list id="list1" hi-items="list1" hi-item="item">
+			 		信息:
+					<p>
+						 <i hi-data="$index"></i> 
+						 
+						 <span  hi-data="item.name"></span><i hi-data="item.age"></i> 
+					<p>
+				 </list>
+			 </div>
+				
+				
+
+		</div>
+
+		<input type="text" name="text1" id="text1" value="5" />
+		<button onclick="setAttr1Val()">setAttr1Val</button>
+
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/minErr.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/parser.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/helix.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/helix.if.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/helix.list.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var view1Ctrl = function(vm) {
+				vm.test1 = "test1";
+				vm.test2 = "test2";
+				vm.array1 = ["item1", "item2"];
+				vm.obj1 = {
+					attr1: "attr1",
+					attr2: "attr2"
+				};
+			}
+			 
+			var view1 = helix.def("view1", function(vm) {
+				vm.test1 = "初中部";
+				vm.test2 = "花名册";
+				vm.array1 = ["item1", "item2"];
+				vm.obj1 = {
+					attr1: "attr1",
+					attr2: "attr2"
+				};
+
+				vm.list1 = [{
+					name: "韩梅梅",
+					age: 11
+				}, {
+					name: "李磊",
+					age: 11
+				}, {
+					name: "Poly",
+					age: 3
+				}];
+				for(var i=0; i<10 ;i++){
+					vm.list1.push({
+					name: "Poly" + i,
+					age: 4
+				})
+				}
+				
+			});
+			
+			 
+			 
+		</script>
+	</body>
+
+</html>

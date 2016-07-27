@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="view1">
+
+			<h1>Title</h1>
+			<p>part</p>
+			more
+		</div>
+		<div id="view2">
+
+			<h1>Title</h1>
+			<p>part</p>
+			more
+		</div>
+<button onclick="bc()">
+	oo
+</button>
+		<script type="text/javascript">
+			var cns = document.getElementById("view1").childNodes;
+			
+			debugger
+		//	document.getElementById("view1").innerHTML = "";
+			function bc(){
+				debugger;
+				var dg = document.createTextNode("");
+				dg.textContent = "ssss";
+				document.getElementById("view1").appendChild(dg);
+				
+			}
+			 //document.getElementById("view1").removeChild()
+		</script>
+			
+	</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>单元测试</title>
+		<link rel="stylesheet" type="text/css" href="lib/mocha.css" />
+		<script src="lib/mocha.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/expect.js"></script>
+		<script type="text/javascript">
+			mocha.setup('bdd');
+			mocha.setup({
+				timeout: 100000
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<div id="mocha"></div>
+		<div style="display: none;">
+			<textarea id="objtest1">
+				<span id="test1" hi-data="test1"></span>
+				<span id="obj1attr1" hi-data="obj1.attr1"></span>
+				<span id="obj1attr2attr1" hi-data="obj1.attr2.attr1"></span>
+			</textarea>
+
+			<textarea id="arraytest1">
+				<table>
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>姓名</th>
+							<th>年龄</th>
+						</tr>
+					</thead>
+					<tbody id="list1" hi-items="list1" hi-item="item">
+						<tr>
+							<td><i hi-data="$index"></i>
+							</td>
+							<td><span hi-data="item.name"></span>
+							</td>
+							<td><i hi-data="item.age"></i>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</textarea>
+			<textarea id="iftest1">
+				<div id="iftestDiv">
+					<if hi-when="val == 1">
+						<h2 hi-data="a"></h2>
+					</if>
+					<if hi-when="val > 1">
+						<h1 hi-data="b"></h2>
+
+					</if>
+
+					
+
+					<if hi-when="val < 1">
+
+						<h2 hi-data="c"></h2>
+
+					</if>
+
+				</div>
+			</textarea>
+		</div>
+
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/util.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="../js/helix.parser.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="../js/helix.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="../js/helix.if.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="../js/helix.list.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="tests/helix.js" type="text/javascript" charset="utf-8"></script>
+		<script src="tests/helix.if.js" type="text/javascript" charset="utf-8"></script>	
+		<script src="tests/helix.list.js" type="text/javascript" charset="utf-8"></script>	
+		<script type="text/javascript">
+			mocha.run(); 
+		</script>
+
+	</body>
+
+</html>

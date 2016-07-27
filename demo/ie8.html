@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="iesupport.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			var vm = {
+				text1: "123",
+				object1: {
+					foo: "123"
+				},
+				object2: {
+					ex: "ddd",
+					arr1: [{
+						de: 12,
+						fa: "sd"
+					}, {
+						de: 12,
+						fa: "sd"
+					}]
+				}
+			}
+		</script>
+		
+		<script type="text/vbscript">
+			 
+			
+			Class Class_65916881
+				Public expr__
+				Public owner__
+				Public Property get text1
+				text1= doGet (appendExpr(expr__,"text1"), owner__)
+				End Property 
+				Public Property Let text1(c__)
+				 call doset (appendExpr(expr__,"text1"), owner__,c__)
+				End Property 
+				Public Property Set text1(c__)
+				 call doset (appendExpr(expr__,"text1"), owner__,c__)
+				End Property 
+				Public Property get object1
+				object1= doGet (appendExpr(expr__,"object1"), owner__)
+				End Property 
+				Public Property Let object1(c__)
+				 call doset (appendExpr(expr__,"object1"), owner__,c__)
+				End Property 
+				Public Property Set object1(c__)
+				 call doset (appendExpr(expr__,"object1"), owner__,c__)
+				End Property 
+				Public Property get object2
+				object2= doGet (appendExpr(expr__,"object2"), owner__)
+				End Property 
+				Public Property Let object2(c__)
+				 call doset (appendExpr(expr__,"object2"), owner__,c__)
+				End Property 
+				Public Property Set object2(c__)
+				 call doset (appendExpr(expr__,"object2"), owner__,c__)
+				End Property 
+			End Class
+			Sub funcX(callback)
+			Set objC = new Class_65916881 
+			callback(objC)
+			End Sub
+			
+			
+		</script>
+		
+		<script type="text/javascript">
+		var obj = {};
+			var rtnFun = callBackFun(obj,"", vm);
+			funcX(rtnFun);
+			var pupet = obj.target
+			alert(pupet.text1)
+			
+		</script>
+		
+	</body>
+
+</html>

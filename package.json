@@ -1,0 +1,29 @@
+{
+  "name": "helix",
+  "version": "1.0.0",
+  "description": "an MVVM framework.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iuap-design/helix.git"
+  },
+  "keywords": [
+    "iuap",
+    "design",
+    "helix",
+    "MVVM",
+    "framework"
+  ],
+  "author": "Yonyou FED",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iuap-design/helix/issues"
+  },
+  "homepage": "https://github.com/iuap-design/helix#readme"
+}
