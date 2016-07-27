@@ -5,7 +5,7 @@
   "main": "lib/helix.js",
   "scripts": {
     "build": "webpack --colors --progress --mode=build && node version",
-    "dev": "webpack --progress --colors  --mode=dev && node makeumd --mode=dev",
+    "dev": "webpack --progress --colors  --mode=dev",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
   },
   "repository": {
