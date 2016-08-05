@@ -1,0 +1,6 @@
+class BaseComponent {
+
+
+}
+
+export {BaseComponent};
