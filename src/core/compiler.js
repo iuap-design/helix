@@ -10,7 +10,7 @@ const compiler = {
     compileDom: function (dom, vm, owner, param) {
         var childs = dom.childNodes;
         if (!childs) {
-            throw new Exception('dom must have child!');
+            throw new Exception('root dom must have child!');
         }
         var len = childs.length;
         for (var i = 0; i < len; i++) {

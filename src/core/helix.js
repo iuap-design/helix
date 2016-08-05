@@ -4,7 +4,7 @@ import {compiler} from './compiler'
 import {observe} from './observe'
 import {$linkers} from '../linker/linker'
 
-export function defComponent(ids, component) {
+var defComponent = function (ids, component) {
     var $linker = function namedLinker(trueVM, dom, attr, vm) {
         return component.linker(trueVM, dom, attr, vm);
     };
@@ -17,8 +17,7 @@ export function defComponent(ids, component) {
     }
 }
 
-
-export function def(dom, ctrl) {
+var def = function (dom, ctrl) {
     var vm = {};
     if (util.isFunction(ctrl)) {
         ctrl.call(this, vm);
@@ -32,7 +31,8 @@ export function def(dom, ctrl) {
     this.applyVM(trueVM);
     return trueVM;
 }
-export function applyVM(vm, event) {
+
+var applyVM = function (vm, event) {
     var len = vm.$$subscriber.length;
     for (var i = 0; i < len; i++) {
         try {
@@ -42,3 +42,5 @@ export function applyVM(vm, event) {
         }
     }
 }
+
+export {defComponent, def, applyVM}
