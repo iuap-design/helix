@@ -5,15 +5,10 @@ var env = require('yargs').argv.mode;
 // 读取package.json，将里面内容生成头信息
 var data = fs.readFileSync('./package.json', 'utf8');
 var packageObj = JSON.parse(data);
-var filesArr = [];
-
-if(env=="dev"){
-	filesArr.push('./lib/helix.js');
-}else if(env=="build"){
-	filesArr.push('./lib/helix.min.js');
-}
+var filesArr = ['./dist/helix.js', './dist/helix.min.js'];
 
 var headerStr = '/** \r\n';
+
 headerStr += ' * ' + packageObj.name + ' v' + packageObj.version + '\r\n';
 headerStr += ' * ' + packageObj.description + '\r\n';
 headerStr += ' * author : ' + packageObj.author + '\r\n';
@@ -24,7 +19,7 @@ headerStr += ' **/ \r\n';
 for(var i = 0; i < filesArr.length; i++) {
 	var filePath = filesArr[i]
 	var data = fs.readFileSync(filePath, 'utf8');
-	
+
 	data = headerStr + data;
 	fs.writeFileSync(filePath, data);
 }

@@ -1,3 +1,10 @@
+/** 
+ * iuap-design-helix v1.0.3
+ * helix.js
+ * author : Yonyou FED
+ * homepage : https://github.com/iuap-design/helix#readme
+ * bugs : https://github.com/iuap-design/helix/issues
+ **/ 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -675,7 +682,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var trueVM = {};
 	    _compiler.compiler.compileView(dom, trueVM, vm);
 	    _observe.observe.defObserve(vm, trueVM);
-	    this.applyVM(trueVM);
+
+	    // change
+	    // this.applyVM(trueVM);
+	    applyVM(trueVM);
 	    return trueVM;
 	};
 

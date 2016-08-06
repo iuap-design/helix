@@ -4,9 +4,9 @@
   "description": "helix.js",
   "main": "lib/helix.js",
   "scripts": {
-    "build:prod": "webpack -p --colors --progress --mode=build && node version",
-    "build:dev": "webpack --colors --progress --mode=dev && node version",
-    "build": "npm run build:dev && npm run build:prod",
+    "build:prod": "webpack -p --colors --progress --mode=build",
+    "build:dev": "webpack --colors --progress --mode=dev",
+    "build": "npm run build:dev && npm run build:prod && node version",
     "dev": "webpack-dev-server --content-base dist --progress --colors  --mode=dev",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
     "es": "babel src -d lib",
