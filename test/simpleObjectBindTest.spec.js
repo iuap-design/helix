@@ -1,19 +1,19 @@
-import {helix} from '../src/index';
-import {renderHTML} from '../src/core/render';
+import { createElement, def } from '../src/index';
+import { renderHTML } from '../src/core/render';
 
-import {expect} from 'chai';
+import { expect } from 'chai';
 
-var dom = helix.createElement("div", [], {
+var dom = createElement("div", [], {
     id: "main"
-}, [helix.createElement("div", {
+}, [createElement("div", {
     text: 'text'
 }, {
     id: "test"
-}, [], null), helix.createElement("div", {
+}, [], null), createElement("div", {
     text: 'attr1.childAttr1'
 }, {
     id: "childAttr1"
-}, [], null), helix.createElement("div", {
+}, [], null), createElement("div", {
     text: 'attr2.childAttr2.childAttr21'
 }, {
     id: "childAttr21"
@@ -26,7 +26,7 @@ var model = {
     attr2: {childAttr2: {childAttr21: "childAttr21"}}
 }
 
-var view1 = helix.def(dom, model);
+var view1 = def(dom, model);
 var html = renderHTML(dom);
 
 describe('一级对象绑定', function () {

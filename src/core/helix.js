@@ -28,7 +28,10 @@ var def = function (dom, ctrl) {
     var trueVM = {};
     compiler.compileView(dom, trueVM, vm);
     observe.defObserve(vm, trueVM);
-    this.applyVM(trueVM);
+
+    // change
+    // this.applyVM(trueVM);
+    applyVM(trueVM);
     return trueVM;
 }
 
