@@ -1,6 +1,5 @@
-class BaseComponent {
+'use strict';
 
+export default class BaseComponent {
 
 }
-
-export {BaseComponent};

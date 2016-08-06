@@ -1,12 +1,17 @@
 {
   "name": "iuap-design-helix",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "helix.js",
   "main": "lib/helix.js",
   "scripts": {
-    "build": "webpack --colors --progress --mode=build && node version",
-    "dev": "webpack --progress --colors  --mode=dev",
-    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
+    "build:prod": "webpack -p --colors --progress --mode=build && node version",
+    "build:dev": "webpack --colors --progress --mode=dev && node version",
+    "build": "npm run build:dev && npm run build:prod",
+    "dev": "webpack-dev-server --content-base dist --progress --colors  --mode=dev",
+    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
+    "es": "babel src -d lib",
+    "clean": "rm -rf dist",
+    "prod": "npm run clean && npm run es && npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,17 +29,19 @@
   },
   "homepage": "https://github.com/iuap-design/helix#readme",
   "devDependencies": {
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-2": "^6.11.0",
+    "babel-preset-es2016": "^6.11.3",
     "chai": "^3.5.0",
     "eslint": "^3.1.1",
     "eslint-loader": "^1.4.1",
     "mocha": "^2.5.3",
     "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
     "yargs": "^4.8.1"
   },
   "dependencies": {

@@ -2,50 +2,50 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
+		define("helix", [], factory);
+	else if(typeof exports === 'object')
+		exports["helix"] = factory();
+	else
+		root["helix"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
+
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -55,44 +55,41 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
-	exports.helix = undefined;
-	
+	exports.applyVM = exports.defComponent = exports.def = exports.createComponent = exports.createElement = undefined;
+
 	var _dom = __webpack_require__(1);
-	
+
 	var _observe = __webpack_require__(2);
-	
+
 	var _compiler = __webpack_require__(7);
-	
+
 	var _helix = __webpack_require__(6);
-	
-	var helix = {
-	    createElement: _dom.createElement,
-	    createComponent: _dom.createComponent,
-	    def: _helix.def,
-	    defComponent: _helix.defComponent,
-	    applyVM: _helix.applyVM
-	};
-	exports.helix = helix;
+
+	exports.createElement = _dom.createElement;
+	exports.createComponent = _dom.createComponent;
+	exports.def = _helix.def;
+	exports.defComponent = _helix.defComponent;
+	exports.applyVM = _helix.applyVM;
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	var createElement = function createElement(tag, binds, attributes, childs) {
 	    return new hdom(tag, binds, attributes, childs);
 	};
-	
+
 	var createComponent = function createComponent(tag, viewModel) {};
-	
+
 	function hdom(tag, binds, attributes, childNodes) {
 	    this.nodeName = tag;
 	    this.binds = binds;
@@ -113,20 +110,20 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.observe = undefined;
-	
+
 	var _util = __webpack_require__(3);
-	
+
 	var _array = __webpack_require__(4);
-	
+
 	var _helix = __webpack_require__(6);
-	
+
 	var _protoPropNames = ["this", "propertyIsEnumerable", "isPrototypeOf", "hasOwnProperty", "toLocaleString", "toString", "valueOf", "constructor"];
-	
+
 	var observe = {
 	    defObserve: function defObserve(vm, trueVM) {
 	        this.defPuppetObject(trueVM, vm, trueVM);
@@ -165,7 +162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (_util.util.isArray(ele)) {
 	            var expr = puppet.$$prefix ? puppet.$$prefix + "." + eleId : eleId;
 	            var puppetArr = new _array.HArray(ele, vm, expr, puppet);
-	
+
 	            var obz = {
 	                get: function get() {
 	                    return puppetArr;
@@ -236,7 +233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        event.eleId = eleId;
 	        event.val = val;
 	        event.oldVal = oldVal;
-	
+
 	        observe.publishPropertyChanged(that.$$vm, expr, event);
 	    },
 	    publishPropertyChanged: function publishPropertyChanged(vm, expr, event) {
@@ -252,7 +249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 	};
-	
+
 	exports.observe = observe;
 
 /***/ },
@@ -260,13 +257,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-	
+
 	var StringBuffer = function StringBuffer() {
 	    var buf = [];
 	    this.append = function (str) {
@@ -277,7 +274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return buf.join("");
 	    };
 	};
-	
+
 	var removeSubScriber = function removeSubScriber(vm, expr) {
 	    var arr = vm.$$subscriber;
 	    var len = arr.length;
@@ -293,16 +290,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 	};
-	
+
 	var class2type = {};
 	var types = "Boolean Number String Function Array Date RegExp Object Error Symbol".split(" ");
 	for (var i = 0; i < types.length; i++) {
 	    var name = types[i];
 	    class2type["[object " + name + "]"] = name.toLowerCase();
 	}
-	
+
 	var hasOwn = class2type.hasOwnProperty;
-	
+
 	if (!Array.prototype.indexOf) {
 	    Array.prototype.indexOf = function (item, index) {
 	        var n = this.length,
@@ -313,10 +310,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }return -1;
 	    };
 	}
-	
+
 	//copy form jquery.
 	var util = {
-	
+
 	    noop: function noop() {},
 	    isFunction: function isFunction(obj) {
 	        return util.type(obj) === "function";
@@ -324,17 +321,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    isArray: Array.isArray || function (obj) {
 	        return util.type(obj) === "array";
 	    },
-	
+
 	    isWindow: function isWindow(obj) {
 	        return obj !== null && obj == obj.window;
 	    },
-	
+
 	    isNumeric: function isNumeric(obj) {
-	
+
 	        var realStringObj = obj && obj.toString();
 	        return !util.isArray(obj) && realStringObj - parseFloat(realStringObj) + 1 >= 0;
 	    },
-	
+
 	    isEmptyObject: function isEmptyObject(obj) {
 	        var name;
 	        for (name in obj) {
@@ -342,7 +339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return true;
 	    },
-	
+
 	    isPlainObject: function isPlainObject(obj) {
 	        if (obj && Object.prototype.toString.call(obj) === "[object Object]" && obj.constructor === Object && !hasOwn.call(obj, "constructor")) {
 	            var key;
@@ -351,7 +348,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return false;
 	    },
-	
+
 	    type: function type(obj) {
 	        if (obj == null) {
 	            return obj + "";
@@ -368,26 +365,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	            i = 1,
 	            length = arguments.length,
 	            deep = false;
-	
+
 	        // Handle a deep copy situation
 	        if (typeof target === "boolean") {
 	            deep = target;
-	
+
 	            // skip the boolean and the target
 	            target = arguments[i] || {};
 	            i++;
 	        }
-	
+
 	        // Handle case when target is a string or something (possible in deep copy)
 	        if ((typeof target === "undefined" ? "undefined" : _typeof(target)) !== "object" && !util.isFunction(target)) {
 	            target = {};
 	        }
-	
+
 	        if (i === length) {
 	            target = this;
 	            i--;
 	        }
-	
+
 	        for (; i < length; i++) {
 	            // Only deal with non-null/undefined values
 	            if ((options = arguments[i]) != null) {
@@ -395,12 +392,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                for (name in options) {
 	                    src = target[name];
 	                    copy = options[name];
-	
+
 	                    // Prevent never-ending loop
 	                    if (target === copy) {
 	                        continue;
 	                    }
-	
+
 	                    // Recurse if we're merging plain objects or arrays
 	                    if (deep && copy && (util.isPlainObject(copy) || (copyIsArray = util.isArray(copy)))) {
 	                        if (copyIsArray) {
@@ -409,10 +406,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        } else {
 	                            clone = src && util.isPlainObject(src) ? src : {};
 	                        }
-	
+
 	                        // Never move original objects, clone them
 	                        target[name] = util.extend(deep, clone, copy);
-	
+
 	                        // Don't bring in undefined values
 	                    } else if (copy !== undefined) {
 	                        target[name] = copy;
@@ -420,11 +417,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	            }
 	        }
-	
+
 	        // Return the modified object
 	        return target;
 	    }
-	
+
 	};
 	exports.StringBuffer = StringBuffer;
 	exports.removeSubScriber = removeSubScriber;
@@ -435,31 +432,31 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.HArray = HArray;
-	
+
 	var _accessors = __webpack_require__(5);
-	
+
 	function HArray(arr, vm, expr, puppet) {
 	    this.$$vm = vm;
 	    this.$$prefix = expr;
-	
+
 	    this.$$expr = expr;
 	    /**
 	     * 原对象的拷贝
 	     */
 	    this.$$model = arr;
-	
+
 	    /**
 	     * 备份方法
 	     */
 	    this._push = Array.prototype.push;
 	    this._pop = Array.prototype.pop;
 	    this._reverse = Array.prototype.reverse;
-	
+
 	    this._shift = Array.prototype.shift;
 	    this._unshift = Array.prototype.unshift;
 	    this._splice = Array.prototype.splice;
@@ -555,11 +552,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            Array.prototype.splice.apply(that.$$model, arguments);
 	            var asetter = (0, _accessors.createSetterExpr)(this.$$expr);
 	            asetter.call(this.$$vm, this.$$vm.$$owner, this.$$model);
-	
+
 	            $.each(items, function (i, ele) {
 	                $helix.defArrayItem(that.$$vm, that.$$expr, index + i, that, that.$$model);
 	            });
-	
+
 	            this.notify({
 	                type: "insert",
 	                param: {
@@ -581,13 +578,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	var getterCache = {};
 	var setterCache = {};
-	
+
 	var createGetterExpr = function createGetterExpr(expr) {
 	    if (!getterCache.hasOwnProperty(expr)) {
 	        var funBody = "var $$$rsl = $$$obj." + expr + ";return $$$rsl;";
@@ -596,7 +593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return getterCache[expr];
 	};
-	
+
 	var createSetterExpr = function createSetterExpr(expr) {
 	    if (!setterCache.hasOwnProperty(expr)) {
 	        var funBody = "$$$obj." + expr + "=$$$val;return;";
@@ -605,9 +602,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return setterCache[expr];
 	};
+
 	var getExprFn = function getExprFn(expr) {
 	    return createGetterExpr(expr);
 	};
+
 	exports.createGetterExpr = createGetterExpr;
 	exports.createSetterExpr = createSetterExpr;
 	exports.getExprFn = getExprFn;
@@ -617,23 +616,21 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.defComponent = defComponent;
-	exports.def = def;
-	exports.applyVM = applyVM;
-	
+	exports.applyVM = exports.def = exports.defComponent = undefined;
+
 	var _util = __webpack_require__(3);
-	
+
 	var _compiler = __webpack_require__(7);
-	
+
 	var _observe = __webpack_require__(2);
-	
+
 	var _linker = __webpack_require__(8);
-	
-	function defComponent(ids, component) {
+
+	var defComponent = function defComponent(ids, component) {
 	    var $linker = function namedLinker(trueVM, dom, attr, vm) {
 	        return component.linker(trueVM, dom, attr, vm);
 	    };
@@ -641,11 +638,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _iteratorNormalCompletion = true;
 	        var _didIteratorError = false;
 	        var _iteratorError = undefined;
-	
+
 	        try {
 	            for (var _iterator = ids[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                var id = _step.value;
-	
+
 	                _linker.$linkers[id] = $linker;
 	            }
 	        } catch (err) {
@@ -665,23 +662,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	        _linker.$linkers[ids] = $linker;
 	    }
-	}
-	
-	function def(dom, ctrl) {
+	};
+
+	var def = function def(dom, ctrl) {
 	    var vm = {};
 	    if (_util.util.isFunction(ctrl)) {
 	        ctrl.call(this, vm);
 	    } else {
 	        vm = ctrl;
 	    }
-	
+
 	    var trueVM = {};
 	    _compiler.compiler.compileView(dom, trueVM, vm);
 	    _observe.observe.defObserve(vm, trueVM);
 	    this.applyVM(trueVM);
 	    return trueVM;
-	}
-	function applyVM(vm, event) {
+	};
+
+	var applyVM = function applyVM(vm, event) {
 	    var len = vm.$$subscriber.length;
 	    for (var i = 0; i < len; i++) {
 	        try {
@@ -690,33 +688,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	            console.error(e);
 	        }
 	    }
-	}
+	};
+
+	exports.defComponent = defComponent;
+	exports.def = def;
+	exports.applyVM = applyVM;
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.compiler = undefined;
-	
+
 	var _util = __webpack_require__(3);
-	
+
 	var _linker = __webpack_require__(8);
-	
+
 	var compiler = {
 	    compileView: function compileView(dom, vm, owner) {
 	        vm.$$subscriber = [];
-	
+
 	        this.compileDom(dom, vm, owner);
 	    },
 	    compileDom: function compileDom(dom, vm, owner, param) {
 	        var childs = dom.childNodes;
 	        if (!childs) {
-	            throw new Exception('dom must have child!');
+	            throw new Exception('root dom must have child!');
 	        }
 	        var len = childs.length;
 	        for (var i = 0; i < len; i++) {
@@ -749,17 +751,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.$linkers = undefined;
 	exports.defaultLinker = defaultLinker;
-	
+
 	var _accessors = __webpack_require__(5);
-	
+
 	var $linkers = exports.$linkers = {};
-	
+
 	function defaultLinker(vm, dom, attr, owner, sparam) {
 	    var expr = attr.text ? attr.text : attr.bind;
 	    var fn = (0, _accessors.getExprFn)(expr);
@@ -768,7 +770,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var trueExpr = expr;
 	    var dynExpr = false;
 	    if (param && param.exprMatch == expr.match(/[a-z0-9A-Z_]*/g)[0]) dynExpr = true;
-	
+
 	    dom.setAttribute("expr", trueExpr);
 	    return {
 	        $apply: function $apply() {
@@ -789,4 +791,3 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-//# sourceMappingURL=helix.js.map

@@ -1,12 +1,6 @@
 import {getExprFn} from '../core/accessors'
 import {applyVM} from './helix'
 
-
-class IFComp extends BaseComponent{
-  
-}
-
-
 helix.defComponent("if", {
   linker: function(vm, dom, attr, owner, param) {
     this.attr = owner.attr = attr;
@@ -37,3 +31,7 @@ helix.defComponent("if", {
     };
   }
 });
+
+export default class IFComp extends BaseComponent {
+
+}
