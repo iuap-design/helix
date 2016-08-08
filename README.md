@@ -34,3 +34,5 @@ $ npm run dev
 ```
 $ npm run test
 ```
+##如何访问
+本地访问8080端口->http://localhost:8080/
