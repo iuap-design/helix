@@ -10,7 +10,39 @@
   <div id="app"></div>
   <script src="../dist/helix.js"></script>
   <script>
-    // SOMETHING FOR TEST
+  var dom = helix.createElement("div", [], {
+        id: "main"
+    }, 
+    [
+    helix.createElement("div", {
+        text: 'text'
+    }, {
+        id: "test"
+    }, [], null), 
+
+    helix.createElement("div", {
+        text: 'attr1.childAttr1'
+    }, {
+        id: "childAttr1"
+    }, [], null), 
+
+    helix.createElement("div", {
+        text: 'attr2.childAttr2.childAttr21'
+    }, {
+        id: "childAttr21"
+    }, [], null)
+    ], null);
+
+
+    var model = {
+        text: "hello world!",
+        attr1: {childAttr1: "childAttr1"},
+        attr2: {childAttr2: {childAttr21: "childAttr21"}}
+    }
+
+    var view1 = helix.def(dom, model);
+    var html = helix.renderHTML(dom);
+    document.getElementById('app').innerHTML = html;
   </script>
 </body>
 </html>
